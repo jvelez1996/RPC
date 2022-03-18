@@ -1,3 +1,7 @@
+let playerContainer = 0
+let computerContainer = 0
+let roundsPlayed = 0
+
 function computerPlay () {
     let values = ['Rock', 'Paper', 'Scissors'];
         valueToUse = values[Math.floor(Math.random() * values.length)];
@@ -10,40 +14,40 @@ function playGame (playerPick, computerPick) {
     }
 
      if (playerPick === 'Rock' && computerPick === 'Paper') {
-         return 'You Lost!';
+        computerContainer++; roundsPlayed++; return 'You Lost!';
      }
    
      if (playerPick === 'Rock' && computerPick === 'Scissors') {
-         return 'You Won!';
+         playerContainer++; roundsPlayed++;return 'You Won!';
      }
 
      if (playerPick === 'Scissors' && computerPick === 'Paper') {
-         return "You Won!";
+         playerContainer++; roundsPlayed++; return "You Won!";
      }
 
      if (playerPick === 'Scissors' && computerPick === 'Rock') {
-         return 'You Lost!';
+         computerContainer++; roundsPlayed++; return 'You Lost!';
      }
 
      if (playerPick === 'Paper' && computerPick === 'Rock') {
-         return 'You Win!';
+         playerContainer++; roundsPlayed++; return 'You Win!';
      }
 
      if (playerPick === 'Paper' && computerPick === 'Scissors') {
-         return 'You Lost!';
+         computerContainer++; roundsPlayed++; return 'You Lost!';
      }
 
-
 }
 
-function game() {
-    
+function rounds () {
+    while (roundsPlayed < 5) {
+        roundsPlayed++;
+    }
 }
-
-const playerPick = 'Rock';
+let playerPick = prompt("Rock, Paper, or Scissors?");
 const computerPick = computerPlay();
 console.log(playGame(playerPick, computerPick));
-const playerContainer = 0;
-const computerContainer = 0;
-console.log (game(playerContainer, computerContainer));
+console.log("Your Score is " + playerContainer);
+console.log("The Computer Score is " + computerContainer);
+console.log("Number of Rounds Played " + roundsPlayed);
 
