@@ -3,51 +3,54 @@ let computerContainer = 0
 let roundsPlayed = 0
 
 function computerPlay () {
-    let values = ['Rock', 'Paper', 'Scissors'];
+    let values = ['rock', 'paper', 'scissors'];
         valueToUse = values[Math.floor(Math.random() * values.length)];
     return valueToUse;
 }
 
-function playGame (playerPick, computerPick) {
-     if (playerPick === computerPick) {
+
+function playRound (playerSelection, computerSelection) {
+     if (playerSelection === computerSelection) {
         return 'It is a Tie!';
     }
 
-     if (playerPick === 'Rock' && computerPick === 'Paper') {
-        computerContainer++; roundsPlayed++; return 'You Lost!';
+     if (playerSelection === 'rock' && computerSelection === 'paper') {
+        computerContainer++; return 'You Lost!';
      }
    
-     if (playerPick === 'Rock' && computerPick === 'Scissors') {
-         playerContainer++; roundsPlayed++;return 'You Won!';
+     if (playerSelection === 'rock' && computerSelection === 'scissors') {
+         playerContainer++; return 'You Won!';
      }
 
-     if (playerPick === 'Scissors' && computerPick === 'Paper') {
-         playerContainer++; roundsPlayed++; return "You Won!";
+     if (playerSelection === 'scissors' && computerSelection === 'paper') {
+         playerContainer++; return "You Won!";
      }
 
-     if (playerPick === 'Scissors' && computerPick === 'Rock') {
-         computerContainer++; roundsPlayed++; return 'You Lost!';
+     if (playerSelection === 'scissors' && computerSelection === 'rock') {
+         computerContainer++; return 'You Lost!';
      }
 
-     if (playerPick === 'Paper' && computerPick === 'Rock') {
-         playerContainer++; roundsPlayed++; return 'You Win!';
+     if (playerSelection === 'paper' && computerSelection === 'rock') {
+         playerContainer++; return 'You Win!';
      }
 
-     if (playerPick === 'Paper' && computerPick === 'Scissors') {
-         computerContainer++; roundsPlayed++; return 'You Lost!';
+     if (playerSelection === 'paper' && computerSelection === 'scissors') {
+         computerContainer++; return 'You Lost!';
      }
 
 }
 
-function rounds () {
-    while (roundsPlayed < 5) {
-        roundsPlayed++;
+function game () {
+    for (let i = 0; i < 5; i++) {
+        playRound (playerSelection, computerSelection);
     }
 }
-let playerPick = prompt("Rock, Paper, or Scissors?");
-const computerPick = computerPlay();
-console.log(playGame(playerPick, computerPick));
-console.log("Your Score is " + playerContainer);
-console.log("The Computer Score is " + computerContainer);
-console.log("Number of Rounds Played " + roundsPlayed);
+
+let playerSelection = prompt('rock, paper, or scissors?');
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
+console.log(game ());
+//console.log("Your Score is " + playerContainer);
+//console.log("The Computer Score is " + computerContainer);
+//console.log("Number of Rounds Played " + roundsPlayed);
 
